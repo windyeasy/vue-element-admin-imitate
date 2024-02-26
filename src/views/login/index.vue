@@ -6,8 +6,7 @@ defineOptions({
 
 <template>
   <div class="login-container">
-    <el-button>测试</el-button>
-    <HelloWorld />
+    login
   </div>
 </template>
 
