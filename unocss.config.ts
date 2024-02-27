@@ -3,7 +3,8 @@ import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
 
 export default defineConfig({
-  presets: [
+  
+  'presets': [
     presetUno(),
     presetIcons({
       collections: {

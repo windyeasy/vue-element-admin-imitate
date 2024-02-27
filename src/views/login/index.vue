@@ -12,7 +12,7 @@ const form = reactive({
   <div class="login-container">
     <el-form :model="form" class="login-form">
       <div class="title-container">
-        <h3 class="title text-center">
+        <h3 class="title text-center text-26px text-white">
           Login Form
         </h3>
       </div>
