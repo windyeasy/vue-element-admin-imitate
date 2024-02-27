@@ -4,7 +4,7 @@ const test = ref('test auto import')
 
 <template>
   <div class="home">
-    <div class="header m-1">
+    <div class="header">
       home
       {{ test }}
       <hello-world />

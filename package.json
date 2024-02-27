@@ -31,6 +31,7 @@
     "@commitlint/config-conventional": "^18.6.2",
     "@iconify-json/ep": "^1.1.14",
     "@types/node": "^20.11.19",
+    "@unocss/preset-attributify": "^0.58.5",
     "@unocss/preset-icons": "^0.58.5",
     "@unocss/preset-uno": "^0.58.5",
     "@vitejs/plugin-vue": "^5.0.3",

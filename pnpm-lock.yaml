@@ -52,6 +52,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.19
     version: 20.11.19
+  '@unocss/preset-attributify':
+    specifier: ^0.58.5
+    version: 0.58.5
   '@unocss/preset-icons':
     specifier: ^0.58.5
     version: 0.58.5

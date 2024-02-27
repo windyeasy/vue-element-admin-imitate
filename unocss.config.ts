@@ -1,10 +1,10 @@
 import { defineConfig } from 'unocss'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
+import presetAttributify from '@unocss/preset-attributify'
 
 export default defineConfig({
-  
-  'presets': [
+  presets: [
     presetUno(),
     presetIcons({
       collections: {
@@ -14,5 +14,6 @@ export default defineConfig({
         },
       },
     }),
+    presetAttributify(),
   ],
 })
