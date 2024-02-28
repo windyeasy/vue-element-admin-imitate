@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import ShowTips from './c-cpns/show-tips.vue'
+import type { ILoginForm } from '@/types'
+
 defineOptions({
   name: 'Login',
 })
-const form = reactive({
+const form = reactive<ILoginForm>({
   username: 'admin',
   password: '111111',
 })
@@ -17,19 +20,23 @@ const form = reactive({
         </h3>
       </div>
       <el-form-item props="username">
-        <el-input v-model="form.username" size="large">
+        <el-input v-model="form.username" type="text" size="large" placeholder="Username">
           <template #prefix>
             <div class="i-custom:user" />
           </template>
         </el-input>
       </el-form-item>
       <el-form-item props="username">
-        <el-input v-model="form.password" size="large">
+        <el-input v-model="form.password" show-password type="password" placeholder="Password" size="large">
           <template #prefix>
             <div class="i-custom:password" />
           </template>
         </el-input>
       </el-form-item>
+      <el-button class="w100%" type="primary">
+        Login
+      </el-button>
+      <ShowTips />
     </el-form>
   </div>
 </template>
@@ -43,10 +50,15 @@ const form = reactive({
   overflow: hidden;
 }
 .login-form {
+  .el-input {
+    --el-input-bg-color: rgba(0, 0, 0, 0.1) !important;
+    --el-input-text-color: #fff;
+  }
   width: 520px;
   max-width: 100%;
   padding: 160px 35px 0;
   margin: 0 auto;
   overflow: hidden;
+
 }
 </style>

@@ -7,6 +7,9 @@ import 'normalize.css'
 import 'virtual:uno.css'
 import '@/icons/index'
 
+// 导入自定义样式
+import '@/assets/css/index.scss'
+
 const app = createApp(App)
 app.use(router)
 app.use(store)
