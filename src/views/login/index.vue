@@ -16,10 +16,6 @@ const rules = reactive<FormRules<ILoginForm>>({
   username: [
     {
       required: true,
-
-      trigger: 'blur',
-    },
-    {
       validator: (_, value, callback) => {
         if (!(validUsername(value)))
           callback(new Error('Please enter the correct user name'))
@@ -28,6 +24,7 @@ const rules = reactive<FormRules<ILoginForm>>({
       },
       trigger: 'blur',
     },
+
   ],
   password: [
     {
@@ -85,8 +82,12 @@ const rules = reactive<FormRules<ILoginForm>>({
 }
 .login-form {
   .el-input {
+    --login-input-border-color: rgba(255, 255, 255, .1);
     --el-input-bg-color: rgba(0, 0, 0, 0.1) !important;
     --el-input-text-color: #fff;
+
+    --el-input-focus-border-color: var( --login-input-border-color);
+    --el-border-color: var( --login-input-border-color);
   }
   width: 520px;
   max-width: 100%;
