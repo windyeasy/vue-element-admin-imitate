@@ -1,13 +1,17 @@
 <script lang="ts" setup>
-import type { FormRules } from 'element-plus'
+import type { FormInstance, FormRules } from 'element-plus'
 import ShowTips from './c-cpns/show-tips.vue'
 import { validUsername } from './utils/validates.ts'
 
 import type { ILoginForm } from '@/types'
+import request from '@/services'
 
 defineOptions({
   name: 'Login',
 })
+
+// 登录表单相关方法
+const formEl = ref<FormInstance>()
 const form = reactive<ILoginForm>({
   username: 'admin',
   password: '111111',
@@ -38,13 +42,43 @@ const rules = reactive<FormRules<ILoginForm>>({
       trigger: 'blur',
     },
   ],
-
 })
+
+// 处理登录点击
+// 登录loading效果
+const isLoading = ref(false)
+
+async function submitLogin() {
+  if (!formEl)
+    return
+  isLoading.value = true
+  await formEl!.value!.validate((valid) => {
+    if (valid) {
+      isLoading.value = false
+      // console.log('测试')
+
+      // request.post({
+      //   url: '/vue-element-admin/user/login',
+      //   data: form,
+      // }).then((res) => {
+      //   console.log(res)
+      // })
+      request.get({
+        url: '/vue-element-admin/user/info',
+        params: { token: '123' },
+      }).then((res) => {
+        console.log(res)
+      })
+    }
+
+    else { isLoading.value = false }
+  })
+}
 </script>
 
 <template>
   <div class="login-container">
-    <el-form :model="form" class="login-form" :rules="rules">
+    <el-form ref="formEl" :model="form" class="login-form" :rules="rules">
       <div class="title-container">
         <h3 class="title text-center text-26px text-white">
           Login Form
@@ -64,7 +98,7 @@ const rules = reactive<FormRules<ILoginForm>>({
           </template>
         </el-input>
       </el-form-item>
-      <el-button class="w100%" type="primary">
+      <el-button class="w100%" type="primary" :loading="isLoading" @click="submitLogin">
         Login
       </el-button>
       <ShowTips />

@@ -2,6 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+// 导入mock
+import './mock/index'
+
+// 样式导入
 import 'element-plus/dist/index.css'
 import 'normalize.css'
 import 'virtual:uno.css'
