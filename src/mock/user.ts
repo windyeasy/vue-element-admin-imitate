@@ -54,8 +54,8 @@ const userMocks: IMockParameter[] = [
       }
       else {
         return {
-          code: 2000,
-          token,
+          code: 20000,
+          data: token,
         }
       }
     },
@@ -68,7 +68,6 @@ const userMocks: IMockParameter[] = [
       const queryStringUrl = config.url.split('?')[1]
       // 解析传入参数
       const query = queryString.parse(queryStringUrl)
-
       const token = query.token as string
       if (typeof token != 'string') {
         return {

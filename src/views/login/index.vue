@@ -4,7 +4,7 @@ import ShowTips from './c-cpns/show-tips.vue'
 import { validUsername } from './utils/validates.ts'
 
 import type { ILoginForm } from '@/types'
-import request from '@/services'
+import useLoginStore from '@/store/login'
 
 defineOptions({
   name: 'Login',
@@ -43,31 +43,26 @@ const rules = reactive<FormRules<ILoginForm>>({
     },
   ],
 })
-
+const loginStore = useLoginStore()
 // 处理登录点击
 // 登录loading效果
 const isLoading = ref(false)
-
+const router = useRouter()
 async function submitLogin() {
   if (!formEl)
     return
   isLoading.value = true
-  await formEl!.value!.validate((valid) => {
+  await formEl!.value!.validate(async (valid) => {
     if (valid) {
       isLoading.value = false
-      // console.log('测试')
-
-      // request.post({
-      //   url: '/vue-element-admin/user/login',
-      //   data: form,
-      // }).then((res) => {
-      //   console.log(res)
-      // })
-      request.get({
-        url: '/vue-element-admin/user/info',
-        params: { token: '123' },
-      }).then((res) => {
-        console.log(res)
+      loginStore.loginAction(form).then(() => {
+        isLoading.value = false
+       
+        // 跳转到首页
+        router.push('/layout')
+      }).catch((error) => {
+        console.warn(error)
+        isLoading.value = false
       })
     }
 
@@ -119,7 +114,7 @@ async function submitLogin() {
     --login-input-border-color: rgba(255, 255, 255, .1);
     --el-input-bg-color: rgba(0, 0, 0, 0.1) !important;
     --el-input-text-color: #fff;
-
+    --el-border-color-hover: rgba(255, 255, 255, .1);
     --el-input-focus-border-color: var( --login-input-border-color);
     --el-border-color: var( --login-input-border-color);
   }
