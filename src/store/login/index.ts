@@ -27,7 +27,6 @@ const useLoginStore = defineStore('login', {
       const res = await login(userInfo)
       if (res.code === 20000) {
         this.token = res.data.token
-        console.log(this.token)
         localCache.setCache(ACCOUNT_TOKEN, this.token)
         this.getUserInfoAction()
       }

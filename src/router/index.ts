@@ -1,10 +1,13 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-export default createRouter({
+import { ACCOUNT_TOKEN } from '@/store/constants'
+import { localCache } from '@/utils/cache'
+
+const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: '/layout',
     },
     {
       path: '/layout',
@@ -22,3 +25,14 @@ export default createRouter({
   ],
   history: createWebHashHistory(),
 })
+// 路由守卫
+router.beforeEach((to) => {
+  const token = localCache.getCache(ACCOUNT_TOKEN)
+
+  if (to.path !== '/login' && !token)
+    return '/login'
+  if (to.path === '/login' && token)
+    return '/layout'
+  return true
+})
+export default router

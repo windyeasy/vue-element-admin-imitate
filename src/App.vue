@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import useLoginStore from '@/store/login'
 
-const loginStore = useLoginStore()
-console.log(loginStore)
 </script>
 
 <template>
@@ -11,6 +8,6 @@ console.log(loginStore)
   </div>
 </template>
 
-<style scoped>
+<style scope="scss" scoped>
 
 </style>
