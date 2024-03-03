@@ -14,13 +14,13 @@ function tencentHandleClick() {
   <div class="social-signup-container">
     <div class="sign-btn" @click="wechatHandleClick()">
       <div class="icon-wrap wechat-wrap">
-        <div class="i-custom:user" />
+        <div class="i-custom:wechat?mask text-white text-2xl" />
       </div>
       WeChat
     </div>
     <div class="sign-btn" @click="tencentHandleClick()">
       <div class="icon-wrap qq-wrap">
-        <div class="i-custom:user" />
+        <div class="i-custom:qq?mask text-white text-2xl" />
       </div>
       QQ
     </div>

@@ -57,7 +57,7 @@ async function submitLogin() {
       isLoading.value = false
       loginStore.loginAction(form).then(() => {
         isLoading.value = false
-       
+
         // 跳转到首页
         router.push('/layout')
       }).catch((error) => {
@@ -82,14 +82,14 @@ async function submitLogin() {
       <el-form-item prop="username">
         <el-input v-model="form.username" type="text" size="large" placeholder="Username">
           <template #prefix>
-            <div class="i-custom:user" />
+            <div class="i-custom:user?mask" />
           </template>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input v-model="form.password" show-password type="password" placeholder="Password" size="large">
           <template #prefix>
-            <div class="i-custom:password" />
+            <div class="i-custom:password?mask" />
           </template>
         </el-input>
       </el-form-item>
